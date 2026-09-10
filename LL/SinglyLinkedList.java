@@ -63,7 +63,7 @@ public class SinglyLinkedList {
 
     // Insert at position
     public void insertAtPosition(int position, int data) {
-        if(position < 1 || position > size+1){
+        if(position < 1 || position > size+1) {
             // insertion not position
             System.out.println("Insertion is not possible at this position");
             return;
@@ -138,7 +138,7 @@ public class SinglyLinkedList {
         }
     }
 
-    public void clear(){
+    public void clear() {
         if(head != null) {
             head = null;
         }
@@ -147,10 +147,194 @@ public class SinglyLinkedList {
         size=0;
     }
 
+    // ====================
+    // SEARCH
+    // ====================    
+
+    public boolean search(int target) {
+        Node temp = head;
+        while (temp != null){
+            if(temp.data == target) {
+                return true;
+            }
+            else {
+                temp = temp.next;
+            }
+        }
+        return false;
+    }
+
+    public int findPosition(int target) {
+        Node temp = head;
+        int position = 1;
+        while (temp != null) {
+            if(temp.data == target) {
+                return position;
+            }
+            else {
+                temp = temp.next;
+                position++;
+            }
+        }
+        return -1;
+    }
+
+    // ====================
+    // UPDATE
+    // ====================    
+
+    // update using position
+    public void updateATPositin(int position, int newData) {
+        if(position < 1 || position > size+1) {
+            System.out.println("Invalid position given in input");
+            return;
+        }
+
+        Node temp = head;
+
+        for(int i=1; i<= position-1; i++) {
+            temp = temp.next;
+        }
+
+        temp.data = newData;
+        
+    }
+
+    // Update first occurrence of value
+    public boolean updateValue(int oldValue, int newValue) {
+        Node temp = head;
+        while(temp != null){
+            if(temp.data == oldValue) {
+                temp.data = newValue;
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    // ====================
+    // DELETION
+    // ====================     
+
+    // deletion at head
+    public void deleteHead(){
+        if(head == null){
+            System.out.println("LL is empty, cannot delete anything");
+            return;
+        }
+        //main logic
+        head = head.next;
+        size--;
+
+        if(head == null){
+            tail = null;
+        }
+    }
+
+    // delete at tail
+    public void deleteTail() {
+        if(tail == null){
+            System.out.println("LL is empty, cannot delete anything");
+            return;
+        }
+
+        // check for single node
+        if(head == tail){
+            head = null;
+            tail = null;
+            size = 0;
+            return;        
+        }
+
+        // main logic
+        Node temp = head;
+        for(int i=1;i<=size-2;i++) {
+            temp = temp.next;
+        }
+
+        temp.next = null;
+        tail = temp;
+
+        // updating size
+        size--;
+    }
+
+    // delete at any position
+    public void deleteAtPosition(int position){
+        if(position < 1 || position > size+1){
+            System.out.println("Invalid position, can't delete node");
+            return;
+        }
+
+        if(position == 1){
+            deleteHead();
+            return;
+        }
+
+        if(position == size){
+            deleteTail();
+            return;
+        }
+
+        // varialbe setup -> prev,curr,forward
+        Node prev = head;
+
+        // prev ko position -2 steps move karunga to main nodeToDelete ke piche wali node par pahuch jaunga 
+        for(int i=1; i<=position-2; i++){
+            prev = prev.next;
+        }
+        Node curr = prev.next;
+        Node forward = curr.next;
+
+        // main logic
+        prev.next = forward;
+        curr.next = null;
+
+        // update size
+        size--;
+    }
+
+    public boolean deleteValue(int target){
+        if(head == null){
+            System.out.println("LL is empty, no element present in LL for deletion");
+            return false;
+        }
+
+        if(head.data  == target ) {
+            deleteHead();
+            return true;
+        }
+
+        Node prev = head;
+        Node curr = head.next;
+
+        while(curr != null){
+            if(curr.data == target){
+                Node forward = curr.next;
+
+                // main logic
+                prev.next = forward;
+                curr.next = null;
+
+                if(tail == curr){
+                    tail = prev;
+                }
+                size--;
+                return true;
+            }
+            else {
+                prev = prev.next;
+                curr = curr.next;
+            }
+        }
+        return false;
+    }
+
     public static void main(String [] args) {
         SinglyLinkedList mylist = new SinglyLinkedList();
 
-        if(mylist.isEmpty()){
+        if(mylist.isEmpty()) {
             System.out.println("List is Empty");
         }
 
@@ -188,8 +372,39 @@ public class SinglyLinkedList {
 
         System.out.println(mylist.getHead());
         System.out.println(mylist.getTail());
+        System.out.println("Found or Not : "+mylist.search(200));
+        System.out.println("Found or Not : "+mylist.search(250));
+        System.out.println("Position of you target : "+mylist.findPosition(45));
+        System.out.println("Position of you target : "+mylist.findPosition(100));
+        mylist.updateATPositin(5,1000 );
+        mylist.printList();
+        System.out.println("Updated or not: " +mylist.updateValue(0,1001));
+        mylist.printList();
 
+        mylist.deleteHead();
+        mylist.printList();
 
+        mylist.deleteHead();
+        mylist.printList();
+
+        mylist.deleteHead();
+        mylist.printList();
+
+        mylist.deleteHead();
+        mylist.printList();
+
+        mylist.deleteTail();
+        mylist.printList();
+
+        mylist.deleteAtPosition(5);
+        mylist.printList();
+
+        mylist.deleteAtPosition(1);
+        mylist.printList();
+
+        mylist.deleteValue(125);
+        mylist.printList();
+        
     }
-}
+}    
 
