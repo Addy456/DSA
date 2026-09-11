@@ -171,7 +171,22 @@ public class DoublyLinkedList {
     // ====================    
 
     public boolean search(int target) {
-       return true;
+        if(head == null){
+            System.out.println("LL is Empty");
+            return false;
+        }
+
+        Node temp = head;
+        
+        while(temp != null){
+            if(temp.data == target){
+                return true;
+            }
+            else{
+                temp = temp.next;
+            }
+        }
+        return false;
     }
 
     public int findPosition(int target) {
@@ -247,6 +262,8 @@ public class DoublyLinkedList {
         mylist.printList();
 
         mylist.printBackward();
+
+        System.out.println("Found or Not : " +mylist.search(110));
     
     }
 }
