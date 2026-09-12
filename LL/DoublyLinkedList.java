@@ -228,17 +228,62 @@ public class DoublyLinkedList {
 
     // delete at tail
     public void deleteTail() {
-        
+        if(tail == null){
+            System.out.println("Empty DLL no deletion possible");
+            return;
+        }
+
+        if(head == tail){
+            head = null;
+            tail = null;
+
+            // update size
+            size=0;
+            return;
+        }
+        // main logic
+        tail = tail.prev;
+        tail.next = null;
+
+        // Update size
+        size--;
     }
 
     // delete at any position
     public void deleteAtPosition(int position){
-        
+        if(position < 1 || position > size+1){
+            System.out.println("Invalid Position");
+            return;
+        }
+
+        if(position == 1){
+            deleteHead();
+            return;
+        }
+
+        if(position == size){
+            deleteTail();
+            return;
+        }
+
+        Node temp = head;
+        for(int i=1; i<=position-1; i++){
+            temp = temp.next;
+        }
+
+        Node prevNode = temp.prev;
+        Node nextNode = temp.next;
+
+        // main logic
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+
+        temp.prev = temp.next = null;
+
+        // update size
+        size--;
     }
 
-    public boolean deleteValue(int target){
-        return true;
-    }
 
     public static void main(String[] args){
         DoublyLinkedList mylist = new DoublyLinkedList();
@@ -252,6 +297,9 @@ public class DoublyLinkedList {
         mylist.insertAtHead(30);
         mylist.printList();
 
+        mylist.insertAtHead(40);
+        mylist.printList();
+
         mylist.insertAtTail(100);
         mylist.printList();
 
@@ -259,6 +307,9 @@ public class DoublyLinkedList {
         mylist.printList();
 
         mylist.insertAtTail(120);
+        mylist.printList();
+
+        mylist.insertAtTail(130);
         mylist.printList();
 
         mylist.insertAtPosition(4,1000);
@@ -270,12 +321,38 @@ public class DoublyLinkedList {
         mylist.insertAtPosition(6,1002);
         mylist.printList();
 
+        mylist.insertAtPosition(7,1003);
+        mylist.printList();
+
         mylist.printBackward();
 
         System.out.println("Found or Not : " +mylist.search(110));
 
         mylist.deleteHead();
         mylist.printList();
+
+        mylist.deleteHead();
+        mylist.printList();
+
+        mylist.deleteHead();
+        mylist.printList();
+
+        mylist.deleteTail();
+        mylist.printList();
     
+        mylist.deleteTail();
+        mylist.printList();
+        
+        mylist.deleteTail();
+        mylist.printList(); 
+        
+        mylist.deleteAtPosition(1);
+        mylist.printList();
+
+        mylist.deleteAtPosition(5);
+        mylist.printList();
+
+        mylist.deleteAtPosition(3);
+        mylist.printList();
     }
 }
