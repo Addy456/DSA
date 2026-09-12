@@ -189,19 +189,10 @@ public class DoublyLinkedList {
         return false;
     }
 
-    public int findPosition(int target) {
-        return 0;
-    }
-
     // ====================
     // UPDATE
     // ====================    
 
-    // update using position
-    public void updateATPositin(int position, int newData) {
-      
-        
-    }
 
     // Update first occurrence of value
     public boolean updateValue(int oldValue, int newValue) {
@@ -214,7 +205,25 @@ public class DoublyLinkedList {
 
     // deletion at head
     public void deleteHead(){
-       
+       if(head == null ){
+        System.out.println("Empty LL no deletion possible");
+        return;
+       }
+
+       if(head == tail){
+        head = null;
+        tail = null;
+       }
+
+    // Main logic
+       Node temp = head;
+       head = temp.next;
+
+       temp.next = null;
+       head.prev = null;
+    
+       // Update size
+       size--;
     }
 
     // delete at tail
@@ -264,6 +273,9 @@ public class DoublyLinkedList {
         mylist.printBackward();
 
         System.out.println("Found or Not : " +mylist.search(110));
+
+        mylist.deleteHead();
+        mylist.printList();
     
     }
 }
