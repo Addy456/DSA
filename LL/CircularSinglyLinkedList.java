@@ -142,6 +142,27 @@ public class CircularSinglyLinkedList{
         return size;
     }
 
+    public boolean isEmpty(){
+        return head == null;
+    }
+
+    public int getHead(){
+        if(head == null){
+            throw new IllegalStateException(
+                "Circular Linkedc List is empty"
+            );
+        }
+        return head.data;
+    }
+
+    public int getTail(){
+        if(tail == null){
+            throw new IllegalStateException(
+                "Circular Linkedc List is empty"
+            );
+        }
+        return tail.data;
+    }
 
     //========================
     //Searching
@@ -243,7 +264,7 @@ public class CircularSinglyLinkedList{
 
         prevNode.next = nextNode;
         currNode.next = null;
-        
+
         // update size
         size--;
     }
