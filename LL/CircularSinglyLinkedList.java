@@ -1,5 +1,3 @@
-import java.net.SocketPermission;
-
 public class CircularSinglyLinkedList{
     
     static class Node{
@@ -118,9 +116,9 @@ public class CircularSinglyLinkedList{
         size++;   
     }
 
-    //=====================================
-    //Print circular singly linked list
-    //=====================================
+    //========================
+    //Utility functions
+    //========================
 
     public void printList(){
         // case 1: Empty CSLL
@@ -133,12 +131,17 @@ public class CircularSinglyLinkedList{
 
         //printing CSLL
         do{
-            System.out.print(temp+"->");
+            System.out.print(temp.data+"->");
             temp = temp.next;
         }while(temp!=head);
 
         System.out.println("Back to Head");
     }
+
+    public int getSize() {
+        return size;
+    }
+
 
     //========================
     //Searching
@@ -164,11 +167,132 @@ public class CircularSinglyLinkedList{
         return false;
     }
 
+    public void deleteAtHead(){
+        if(head == null){
+            System.out.println("Empty CSLL No Deletion possible");
+            return;
+        }
+
+        if(head == tail){
+            head.next = null;
+            head = null;
+            tail = null;
+
+            // update size
+            size=0;
+            return;
+        }
+
+        tail.next = head.next;
+        head.next = null;
+        head = tail.next;
+        
+        // update size 
+        size--;
+    }
+
+    public void deleteAtTail(){
+
+        if(tail == null){
+            System.out.println("Empty Linked list");
+            return;
+        }
+
+        if(head == tail){
+            head = tail = null;
+            size = 0;
+            return;
+        }
+
+        Node temp = head;
+
+        for(int i=1;i < size-1; i++){
+            temp = temp.next;
+        }
+        tail = temp;
+        tail.next = head;
+
+        // update size
+        size--;
+    }
+
+    public void deleteAtPosition(int position){
+        if(position < 1 || position > size + 1){
+            System.out.println("Invalid position deletion not possible");
+            return;
+        }
+
+        if(position == 1){
+            deleteAtHead();
+            return;
+        }
+
+        if(position == size){
+            deleteAtTail();
+            return;
+        }
+
+        Node temp = head;
+
+        for(int i=1; i<position-1; i++){
+            temp = temp.next;
+        }
+
+        tail = temp;
+        tail.next = head;
+
+        // update size
+        size--;
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList mylist = new CircularSinglyLinkedList();
 
         mylist.insertAtHead(10);
         mylist.printList();
-        
+
+        mylist.insertAtHead(20);
+        mylist.printList();
+
+        mylist.insertAtHead(30);
+        mylist.printList();
+
+        mylist.insertAtHead(40);
+        mylist.printList();
+
+        mylist.insertAtTail(100);
+        mylist.printList();
+
+        mylist.insertAtTail(110);
+        mylist.printList();
+
+        mylist.insertAtTail(120);
+        mylist.printList();
+
+        mylist.insertAtTail(130);
+        mylist.printList();
+
+        mylist.insertAtPosition(1,1000);
+        mylist.printList();
+
+        System.out.println(mylist.getSize());
+
+        mylist.insertAtPosition(10,1001);
+        mylist.printList();
+
+        mylist.insertAtPosition(5,0);
+        mylist.printList();
+
+        mylist.insertAtPosition(13,0);
+        mylist.printList();
+
+        System.out.println("Found or not: "+mylist.search(0));
+
+        System.out.println("Found or not: "+mylist.search(-1));
+
+        mylist.deleteAtHead();
+        mylist.printList();
+
+
     }
 }
