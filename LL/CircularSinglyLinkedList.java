@@ -232,15 +232,18 @@ public class CircularSinglyLinkedList{
             return;
         }
 
-        Node temp = head;
+        Node prevNode = head;
 
         for(int i=1; i<position-1; i++){
-            temp = temp.next;
+            prevNode = prevNode.next;
         }
 
-        tail = temp;
-        tail.next = head;
+        Node currNode = prevNode.next;
+        Node nextNode = currNode.next;
 
+        prevNode.next = nextNode;
+        currNode.next = null;
+        
         // update size
         size--;
     }
@@ -292,6 +295,10 @@ public class CircularSinglyLinkedList{
 
         mylist.deleteAtHead();
         mylist.printList();
+
+        mylist.deleteAtPosition(5);
+        mylist.printList();
+
 
 
     }
