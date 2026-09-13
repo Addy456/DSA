@@ -320,7 +320,8 @@ public class CircularSinglyLinkedList{
         mylist.deleteAtPosition(5);
         mylist.printList();
 
-
+        mylist.deleteAtTail();
+        mylist.printList();
 
     }
 }
