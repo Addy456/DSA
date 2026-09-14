@@ -149,7 +149,7 @@ public class CircularSinglyLinkedList{
     public int getHead(){
         if(head == null){
             throw new IllegalStateException(
-                "Circular Linkedc List is empty"
+                "Circular Linked List is empty"
             );
         }
         return head.data;

@@ -80,11 +80,13 @@ public class CircularDoublyLinkedList {
         if(position == 1){
             insertAtHead(data);
             size++;
+            return;
         }
 
         if(position == size+1){
             insertAtTail(data);
             size++;
+            return;
         }
 
         Node prevNode = head;
@@ -106,8 +108,75 @@ public class CircularDoublyLinkedList {
         size++;
     }
 
-     public static void main(String[] args) {
-        CircularSinglyLinkedList mylist = new CircularSinglyLinkedList();
+    //===================
+    //Utility function
+    //===================
+
+    // print forward list head->tail
+    public void printList(){
+        if(head == null ){
+            System.out.println("Circular linked list is empty");
+            return;
+        }
+
+        Node temp = head;
+
+        do{
+            System.out.print(temp.data);
+            temp = temp.next;
+        }while(temp != head);
+
+        System.out.println("Back to head");
+    }
+
+    // print list backward tail->head
+    public void printBackwardList(){
+        if(tail == null){
+            System.out.print("Circular linked list is empty");
+            return;
+        }
+
+        Node temp = tail;
+
+        do{
+            System.out.println(temp.data);
+            temp = temp.prev;
+        }while(temp != tail);
+
+        System.out.println("Back to tail");
+    }
+
+    public int getSize(){
+        return size;
+    }
+
+    public boolean isEmpty(){
+        return head == null;
+    }
+
+    public int getHead(){
+        if(head == null){
+            throw new IllegalStateException(
+                "Circular Linked List is Empty"
+                
+            );
+        }
+        return head.data;
+    }
+
+    public int getTail(){
+        if(tail == null){
+            throw new IllegalStateException(
+                "Circular Linked List is Empty"
+            );
+        }
+        return tail.data;
+    }
+    
+    
+    
+    public static void main(String[] args) {
+        CircularDoublyLinkedList mylist = new CircularDoublyLinkedList();
 
         mylist.insertAtHead(10);
         mylist.printList();
