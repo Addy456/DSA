@@ -99,7 +99,7 @@ public class CircularSinglyLinkedList{
         }
 
         // case 4: position is in middle
-            Node prevNode = head;
+        Node prevNode = head;
 
         for(int i=1; i <= position-2; i++){
             prevNode = prevNode.next;
