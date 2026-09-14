@@ -27,7 +27,6 @@ public class SinglyLinkedList {
 
     // Insertion at head
     public void insertAtHead(int data) {
-        // TODO
         Node newNode = new Node(data);
 
         // if LL is Empty -> head and tail ko newNode pr point kardo
@@ -45,7 +44,6 @@ public class SinglyLinkedList {
 
     // Insertion at tail
     public void insertAtTail(int data) {
-        // TODO
         Node newNode = new Node(data);
 
         // if LL is Empty
