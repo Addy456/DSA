@@ -193,7 +193,86 @@ public class CircularDoublyLinkedList {
         }while(temp != head);
         return false;
     }
-    
+
+    //===================
+    //Deletion
+    //===================
+
+    // delete at head
+    public void deleteAtHead(){
+        if(head == null){
+            System.out.println("CDLL is Empty deletion not possible");
+            return;
+        }
+
+        if(head == tail){
+            head = tail = null;
+        }
+
+        else{
+        head = head.next;
+
+        tail.next = head;
+        head.prev = tail;
+        }
+
+        // update size
+        size--;
+    }
+
+    // delete at tail
+    public void deleteAtTail(){
+        if(tail == null){
+            System.out.println("CDLL is empty no deletion possible");
+            return;
+        }
+
+        if(head == tail){
+            head = tail = null;
+        }
+        else{
+            tail = tail.prev;
+            
+            tail.next = head;
+            head.prev = tail;
+        }
+
+        // update size
+        size--;
+    }
+
+    public void deleteAtPosition(int position){
+        if(position < 1 || position > size + 1){
+            System.out.println("Invalid Position");
+            return;
+        }
+
+        if(position == 1){
+            deleteAtHead();
+            return;
+        }
+
+        if(position == size){
+            deleteAtTail();
+            return;
+        }
+
+        Node prevNode = head;
+
+        for(int i=1; i < position-1; i++){
+            prevNode = prevNode.next;
+        }
+
+        Node currNode = prevNode.next;
+        Node nextNode = currNode.next;
+
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        currNode.next = currNode.prev = null;
+
+        // update size
+        size--;
+    }
     public static void main(String[] args) {
         CircularDoublyLinkedList mylist = new CircularDoublyLinkedList();
 
