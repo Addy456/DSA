@@ -122,7 +122,7 @@ public class CircularDoublyLinkedList {
         Node temp = head;
 
         do{
-            System.out.print(temp.data);
+            System.out.print(temp.data +"->");
             temp = temp.next;
         }while(temp != head);
 
@@ -139,7 +139,7 @@ public class CircularDoublyLinkedList {
         Node temp = tail;
 
         do{
-            System.out.println(temp.data);
+            System.out.println(temp.data +"->");
             temp = temp.prev;
         }while(temp != tail);
 
@@ -173,7 +173,26 @@ public class CircularDoublyLinkedList {
         return tail.data;
     }
     
-    
+    //===================
+    //searching
+    //===================
+    public boolean search(int target){
+        if(head == null){
+            return false;
+        }
+
+        Node temp = head;
+
+        do{
+            if(temp.data == target){
+                return true;
+            }
+            else{
+                temp = temp.next;
+            }
+        }while(temp != head);
+        return false;
+    }
     
     public static void main(String[] args) {
         CircularDoublyLinkedList mylist = new CircularDoublyLinkedList();
