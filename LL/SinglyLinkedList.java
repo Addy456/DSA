@@ -329,6 +329,20 @@ public class SinglyLinkedList {
         return false;
     }
 
+    //  public Node mid(Node head){
+    //     Node fast = head;
+    //     Node slow = head;
+
+    //     while(fast != null){
+    //         fast = fast.next;
+    //         if(fast != null){
+    //             fast = fast.next;
+    //             slow = slow.next;
+    //         }
+    //     }
+    //     return slow;
+    // }
+    
     public static void main(String [] args) {
         SinglyLinkedList mylist = new SinglyLinkedList();
 
@@ -402,6 +416,23 @@ public class SinglyLinkedList {
 
         mylist.deleteValue(125);
         mylist.printList();
+
+        
+        // mylist.insertAtHead(30);
+        // mylist.printList();
+
+        // mylist.insertAtTail(100);
+        // mylist.printList();
+
+        // mylist.insertAtTail(110);
+        // mylist.printList();
+
+        // mylist.insertAtTail(120);
+        // mylist.printList();
+
+        // Node middle = mylist.mid(mylist.head);
+        // System.out.println(middle.data);
+        // mylist.printList();
         
     }
 }    
