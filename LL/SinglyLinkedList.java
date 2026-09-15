@@ -329,6 +329,7 @@ public class SinglyLinkedList {
         return false;
     }
 
+    // By fast and slow pointer
     //  public Node mid(Node head){
     //     Node fast = head;
     //     Node slow = head;
@@ -341,6 +342,24 @@ public class SinglyLinkedList {
     //         }
     //     }
     //     return slow;
+    // }
+
+    // by traditional method
+    //   public Node mid(Node head){
+    //     Node temp = head;
+    //     int count = 0;
+
+    //     while(temp != null){
+    //         temp = temp.next;
+    //         count++;
+    //     }
+
+    //     temp = head;
+    //     for(int i = 1; i <= count/2; i++){
+    //         temp = temp.next;
+    //     }
+
+    //     return temp;
     // }
     
     public static void main(String [] args) {

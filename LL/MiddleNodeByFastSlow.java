@@ -1,4 +1,4 @@
-public class MiddleNode {
+public class MiddleNodeByFastSlow {
      public class Node{
         int val;
         Node next;
