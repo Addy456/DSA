@@ -288,6 +288,9 @@ public class CircularDoublyLinkedList {
         mylist.insertAtHead(40);
         mylist.printList();
 
+        mylist.insertAtHead(50);
+        mylist.printList();
+
         mylist.insertAtTail(100);
         mylist.printList();
 
@@ -295,6 +298,9 @@ public class CircularDoublyLinkedList {
         mylist.printList();
 
         mylist.insertAtTail(120);
+        mylist.printList();
+
+        mylist.insertAtTail(130);
         mylist.printList();
 
         mylist.insertAtTail(130);
