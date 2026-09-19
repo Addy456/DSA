@@ -36,7 +36,7 @@ public class MergeTwoSortedLL {
         return head;
     }
 
-       public void printList(Node head){
+    public void printList(Node head){
         Node temp = head;
         while(temp != null){
             System.out.print(temp.val+"->");
