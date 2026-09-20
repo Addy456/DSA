@@ -1,5 +1,6 @@
 public class SinglyLinkedList {
-
+    
+    // node creating
     static class Node {
         int data;
         Node next;
@@ -61,19 +62,25 @@ public class SinglyLinkedList {
 
     // Insert at position
     public void insertAtPosition(int position, int data) {
+        // if position is invalid
         if(position < 1 || position > size+1) {
             // insertion not position
             System.out.println("Insertion is not possible at this position");
             return;
         }
+
+        // when position is on head
         if(position == 1) {
             insertAtHead(data);
             return;
         }
+
+        // when position is on tail
         if(position == size+1) {
             insertAtTail(data);
             return;
         }
+        
         // Middle me kahin par insert karna chahte ho
         Node prevNode = head;
 

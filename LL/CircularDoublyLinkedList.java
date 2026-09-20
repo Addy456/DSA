@@ -1,5 +1,6 @@
 public class CircularDoublyLinkedList {
     
+    // creating node
     static class Node{
         int data;
         Node prev;
@@ -72,23 +73,28 @@ public class CircularDoublyLinkedList {
     }
     
     public void insertAtPosition(int position, int data){
+        
+        // when position is invalid
         if(position < 1 || position > size + 1){
             System.out.println("Positions are invalid");
             return;
         }
 
+        // when posiyion is head
         if(position == 1){
             insertAtHead(data);
             size++;
             return;
         }
 
+        // when position is tail
         if(position == size+1){
             insertAtTail(data);
             size++;
             return;
         }
 
+        // when position is middle in the Linked list
         Node prevNode = head;
 
         for(int i = 1; i < position-1; i++){
