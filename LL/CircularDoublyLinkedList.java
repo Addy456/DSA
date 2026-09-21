@@ -31,12 +31,14 @@ public class CircularDoublyLinkedList {
     //Insert at head
     public void insertAtHead(int data){
         Node newNode = new Node(data);
+        // when LL is empty
         if(head == null){
             head = tail = newNode;
             
             tail.next = head;
             head.prev = tail;
         }
+        // when LL have atleat one node
         else{
             newNode.next = head;
             head.prev = newNode;
@@ -52,12 +54,14 @@ public class CircularDoublyLinkedList {
 
     public void insertAtTail(int data){
         Node newNode = new Node(data);
+        // when LL is empty
         if(tail == null){
             head = tail = newNode;
 
             tail.next = head;
             head.prev = tail;
         }
+        // when LL have atleast one Node
         else{
             newNode.prev = tail;
             tail.next = newNode;
@@ -206,11 +210,12 @@ public class CircularDoublyLinkedList {
 
     // delete at head
     public void deleteAtHead(){
+        // when LL is empty
         if(head == null){
             System.out.println("CDLL is Empty deletion not possible");
             return;
         }
-
+        // when LL have only one node
         if(head == tail){
             head = tail = null;
         }
@@ -228,11 +233,13 @@ public class CircularDoublyLinkedList {
 
     // delete at tail
     public void deleteAtTail(){
+        // when LL is empty
         if(tail == null){
             System.out.println("CDLL is empty no deletion possible");
             return;
         }
 
+        // when LL have only one node
         if(head == tail){
             head = tail = null;
         }
