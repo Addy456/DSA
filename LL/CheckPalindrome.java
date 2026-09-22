@@ -1,13 +1,13 @@
 // Brute force approach present node ki copy karna fir use reverse karke previous vali se compaire karna 
 // optimized solution
 public class CheckPalindrome {
+
     public class Node{
         int val;
         Node next;
         Node() {}
         Node(int x){val = x;}
     }
-
 
     public Node mid(Node head){
         Node fast = head;

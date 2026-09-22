@@ -1,4 +1,5 @@
 public class CheckCycleInLinkedList {
+    
     public class Node{
         int val;
         Node next;
