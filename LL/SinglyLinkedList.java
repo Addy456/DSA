@@ -1,6 +1,6 @@
 public class SinglyLinkedList {
     
-    // node creating
+    // node creation
     static class Node {
         int data;
         Node next;
@@ -30,7 +30,7 @@ public class SinglyLinkedList {
     public void insertAtHead(int data) {
         Node newNode = new Node(data);
 
-        // if LL is Empty -> head and tail ko newNode pr point kardo
+        // when LL is empty
         if (head == null && tail == null) {
             head = newNode;
             tail = newNode;
@@ -47,7 +47,7 @@ public class SinglyLinkedList {
     public void insertAtTail(int data) {
         Node newNode = new Node(data);
 
-        // if LL is Empty
+        // when LL is Empty
         if(head == null && tail == null) {
             head = newNode;
             tail = newNode;
@@ -62,6 +62,7 @@ public class SinglyLinkedList {
 
     // Insert at position
     public void insertAtPosition(int position, int data) {
+        
         // if position is invalid
         if(position < 1 || position > size+1) {
             // insertion not position
@@ -144,13 +145,11 @@ public class SinglyLinkedList {
     }
 
     public void clear() {
-        if(head != null) {
-            head = null;
-        }
+    head = null;
 
-        // update size
-        size=0;
-    }
+    // update size
+    size = 0;
+}
 
     // ====================
     // SEARCH
@@ -224,27 +223,35 @@ public class SinglyLinkedList {
 
     // deletion at head
     public void deleteHead(){
+
+        // when LL is empty
         if(head == null){
             System.out.println("LL is empty, cannot delete anything");
             return;
         }
+        
+        // when only one node is present
+        if(head == tail){
+            head = null;
+            tail = null;
+        }
+
         //main logic
         head = head.next;
         size--;
 
-        if(head == null){
-            tail = null;
-        }
     }
 
     // delete at tail
     public void deleteTail() {
+
+        // when LL is empty
         if(tail == null){
             System.out.println("LL is empty, cannot delete anything");
             return;
         }
 
-        // check for single node
+        // when only one node is present
         if(head == tail){
             head = null;
             tail = null;
@@ -267,21 +274,26 @@ public class SinglyLinkedList {
 
     // delete at any position
     public void deleteAtPosition(int position){
+
+        // when position is invalid
         if(position < 1 || position > size+1){
             System.out.println("Invalid position, can't delete node");
             return;
         }
 
+        // when position is head
         if(position == 1){
             deleteHead();
             return;
         }
 
+        // when position is tail
         if(position == size){
             deleteTail();
             return;
         }
 
+        // when position is in between linked list
         // varialbe setup -> prev,curr,forward
         Node prev = head;
 

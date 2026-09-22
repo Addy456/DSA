@@ -31,6 +31,7 @@ public class DoublyLinkedList {
     public void insertAtHead(int data) {
         Node newNode = new Node(data);
 
+        // when LL is empty
         if(head == null && tail == null) {
             head = newNode;
             tail = newNode;
@@ -49,6 +50,7 @@ public class DoublyLinkedList {
     public void insertAtTail(int data) {
         Node newNode = new Node(data);
 
+        // when LL is empty
         if (head == null && tail == null){
             head = newNode;
             tail = newNode;
@@ -67,20 +69,26 @@ public class DoublyLinkedList {
     
     // Insert at position
     public void insertAtPosition(int position, int data) {
+
+        // when position is invalid
         if(position < 1 || position > size+1) {
             // insertion not position
             System.out.println("Insertion is not possible at this position");
             return;
         }
+
+        // when position is at head
         if(position == 1) {
             insertAtHead(data);
             return;
         }
+
+        // when position is at tail
         if(position == size+1) {
             insertAtTail(data);
             return;
         }
-        // in between kahin par insert karna chahte ho
+        // position is in between kahin par insert karna chahte ho
         Node temp = head;
 
         // Move prevNode by (position -2) steps, to reach to the previous of the destination location
@@ -205,17 +213,20 @@ public class DoublyLinkedList {
 
     // deletion at head
     public void deleteHead(){
+
+        // when no node is present in LL
        if(head == null ){
         System.out.println("Empty LL no deletion possible");
         return;
        }
 
+       // when only one node is present
        if(head == tail){
         head = null;
         tail = null;
        }
 
-    // Main logic
+       // Main logic
        Node temp = head;
        head = temp.next;
 
@@ -228,11 +239,13 @@ public class DoublyLinkedList {
 
     // delete at tail
     public void deleteTail() {
+
+        // when no node is present 
         if(tail == null){
             System.out.println("Empty DLL no deletion possible");
             return;
         }
-
+        // when only one node is present
         if(head == tail){
             head = null;
             tail = null;
@@ -241,6 +254,7 @@ public class DoublyLinkedList {
             size=0;
             return;
         }
+
         // main logic
         tail = tail.prev;
         tail.next = null;
@@ -251,21 +265,26 @@ public class DoublyLinkedList {
 
     // delete at any position
     public void deleteAtPosition(int position){
+
+        // when position is invalid
         if(position < 1 || position > size+1){
             System.out.println("Invalid Position");
             return;
         }
 
+        // when position is head
         if(position == 1){
             deleteHead();
             return;
         }
 
+        // when position is tail
         if(position == size){
             deleteTail();
             return;
         }
 
+        // when position is in between LL
         Node temp = head;
         for(int i=1; i<=position-1; i++){
             temp = temp.next;
