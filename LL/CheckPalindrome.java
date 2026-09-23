@@ -1,5 +1,7 @@
 // Brute force approach present node ki copy karna fir use reverse karke previous vali se compaire karna 
 // optimized solution
+// first you have to break the LL into two by using slow and fast pointers from between
+
 public class CheckPalindrome {
 
     public class Node{
@@ -9,6 +11,7 @@ public class CheckPalindrome {
         Node(int x){val = x;}
     }
 
+    // method for finding middle of a LL
     public Node mid(Node head){
         Node fast = head;
         Node slow = head;
@@ -23,6 +26,7 @@ public class CheckPalindrome {
         return slow;
     }
 
+    // method for reversing a LL
     public Node isReverse(Node head){
         Node prev = null;
         Node curr = head;
@@ -37,6 +41,7 @@ public class CheckPalindrome {
         return prev;
     }
 
+    // method of check a LL is palindrome or not
     public boolean ispalindrome(Node head){
         
         if(head == null || head.next == null){
