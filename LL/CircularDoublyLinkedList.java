@@ -316,7 +316,7 @@ public class CircularDoublyLinkedList {
         mylist.insertAtTail(130);
         mylist.printList();
 
-        mylist.insertAtTail(130);
+        mylist.insertAtTail(140);
         mylist.printList();
 
         mylist.insertAtPosition(1,1000);
